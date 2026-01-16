@@ -82,11 +82,45 @@ java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.Project
 ## Quick Start
 
 ### Prerequisites
-- Java 17 or higher
-- Gradle (or use the included wrapper)
+- Java 21 or higher
+- Maven or Gradle
 - A terminal with truecolor (24-bit color) support
 
 ### Setup
+**Using Maven**
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.kusoroadeolu</groupId>
+    <artifactId>clique-demos</artifactId>
+    <version>v0.0.1</version>
+</dependency>
+```
+
+**Using Gradle**
+```gradle
+// Add it in your root settings.gradle at the end of repositories:
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    implementation 'com.github.kusoroadeolu:clique-demos:v0.0.1'
+}
+```
+
+
 ```bash
 # Clone the repo
 git clone https://github.com/kusoroadeolu/clique-demos.git
