@@ -7,6 +7,7 @@
     <groupId>com.github.kusoroadeolu</groupId>
     <artifactId>clique-demos</artifactId>
     <version>0.0.1</version>
+    <url>https://github.com/kusoroadeolu/clique-demos</url>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -26,6 +27,11 @@
             <groupId>com.github.kusoroadeolu</groupId>
             <artifactId>Clique</artifactId>
             <version>v2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kusoroadeolu</groupId>
+            <artifactId>clique-themes</artifactId>
+            <version>v0.0.1</version>
         </dependency>
     </dependencies>
 

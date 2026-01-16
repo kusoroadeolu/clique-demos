@@ -34,6 +34,9 @@ public final class CliArtGallery {
         exhibit6_PatternDesign();
 
         pause();
+        exhibit7_ThemeShowcase();
+
+        pause();
         displayGalleryExit();
     }
 
@@ -298,6 +301,50 @@ public final class CliArtGallery {
         Clique.parser().print("  [*magenta]╚[/][*cyan]═[/][*blue]═[/][*green]═[/][*yellow]═[/][*red]═[/][*magenta]═[/][*cyan]═[/][*blue]═[/][*green]═[/][*yellow]═[/][*red]═[/][*magenta]═[/][*cyan]═[/][*blue]═[/][*green]═[/][*yellow]═[/][*red]═[/][*magenta]═[/][*cyan]═[/][*blue]═[/][*green]═[/][*yellow]═[/][*red]═[/][*magenta]═[/][*cyan]═[/][*blue]═[/][*green]═[/][*yellow]═[/][*red]═[/][*magenta]╝[/]");
 
         exhibitFooter("Block characters + color patterns");
+    }
+
+    private static void exhibit7_ThemeShowcase() {
+        clearScreen();
+        exhibitHeader("Exhibit 7", "Theme Gallery");
+
+        // Register all themes
+        Clique.registerAllThemes();
+
+        // Catppuccin Mocha
+        Clique.parser().print("  [bold, ul]Catppuccin Mocha[/] [dim]- Soothing pastel dark theme[/]");
+        Clique.parser().print("  [ctp_mauve]●[/] [ctp_pink]●[/] [ctp_red]●[/] [ctp_peach]●[/] [ctp_yellow]●[/] [ctp_green]●[/] [ctp_blue]●[/] [ctp_lavender]●[/]");
+        Clique.parser().print("  [bg_ctp_surface0, ctp_text] UI Box [/] [ctp_green]✓ Success[/] [ctp_red]✗ Error[/]");
+        System.out.println();
+
+        // Dracula
+        Clique.parser().print("  [bold, ul]Dracula[/] [dim]- Iconic purple-accented dark theme[/]");
+        Clique.parser().print("  [drac_red]●[/] [drac_green]●[/] [drac_yellow]●[/] [drac_blue]●[/] [drac_magenta]●[/] [drac_cyan]●[/]");
+        Clique.parser().print("  [drac_magenta]♦[/] [*drac_white, bold]Dracula[/] [drac_green]✓[/] [drac_red]✗[/]");
+        System.out.println();
+
+        // Gruvbox Dark
+        Clique.parser().print("  [bold, ul]Gruvbox Dark[/] [dim]- Retro warm dark palette[/]");
+        Clique.parser().print("  [gruvbox_red]●[/] [gruvbox_orange]●[/] [gruvbox_yellow]●[/] [gruvbox_green]●[/] [gruvbox_aqua]●[/] [gruvbox_blue]●[/] [gruvbox_purple]●[/]");
+        Clique.parser().print("  [gruvbox_orange, bold]⚡[/] [bg_gruvbox_bg1, gruvbox_aqua] Info [/] [gruvbox_fg]Retro vibes[/]");
+        System.out.println();
+
+        // Nord
+        Clique.parser().print("  [bold, ul]Nord[/] [dim]- Cool arctic-inspired colors[/]");
+        Clique.parser().print("  [nord_frost0]●[/] [nord_frost1]●[/] [nord_frost2]●[/] [nord_frost3]●[/] [nord_red]●[/] [nord_yellow]●[/] [nord_green]●[/]");
+        Clique.parser().print("  [nord_frost2]❄[/] [nord_snow, bold]Nordic[/] [nord_green]✓[/] [nord_red]✗[/] [nord_yellow]⚠[/]");
+        System.out.println();
+
+        // Tokyo Night
+        Clique.parser().print("  [bold, ul]Tokyo Night[/] [dim]- Modern purple-blue dark theme[/]");
+        Clique.parser().print("  [tokyo_red]●[/] [tokyo_green]●[/] [tokyo_yellow]●[/] [tokyo_blue]●[/] [tokyo_magenta]●[/] [tokyo_cyan]●[/]");
+        Clique.parser().print("  [tokyo_magenta]◆[/] [*tokyo_white, bold]Tokyo[/] [tokyo_cyan]›[/] [tokyo_fg]Modern & clean[/]");
+        System.out.println();
+
+        // Theme mixing example
+        Clique.parser().print("  [bold, ul]Mix & Match[/] [dim]- Combine themes creatively[/]");
+        Clique.parser().print("  [ctp_mauve]Catppuccin[/] + [tokyo_cyan]Tokyo Night[/] + [nord_frost2]Nord[/] + [drac_magenta]Dracula[/]");
+
+        exhibitFooter("Pre-built themes + custom color palettes");
     }
 
     private static void displayGalleryExit() {
