@@ -34,7 +34,7 @@ An interactive tour through Clique's visual capabilities, featuring:
 <dependency>
     <groupId>com.github.kusoroadeolu</groupId>
     <artifactId>clique-demos</artifactId>
-    <version>v0.0.3</version>
+    <version>v0.0.4</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ An interactive tour through Clique's visual capabilities, featuring:
     }
 
     dependencies {
-        implementation 'com.github.kusoroadeolu:clique-demos:v0.0.3'
+        implementation 'com.github.kusoroadeolu:clique-demos:v0.0.4'
     }
 ```
 
