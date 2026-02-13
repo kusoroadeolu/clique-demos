@@ -51,7 +51,7 @@ An interactive tour through Clique's visual capabilities, featuring:
     }
 
     dependencies {
-        implementation 'com.github.kusoroadeolu:clique-demos:v0.0.2'
+        implementation 'com.github.kusoroadeolu:clique-demos:v0.0.3'
     }
 ```
 
@@ -160,18 +160,6 @@ These demos showcase different aspects of Clique:
 - **Composability** - Combine styles for semantic naming
 
 Check out the [full documentation](https://github.com/kusoroadeolu/Clique) to learn how to use Clique in your own projects.
-
-## Best Demos for Learning
-
-- **New to Clique?** Start with `CliArtGallery` to see what's possible
-- **Want to use themes?** Check out `ThemeShowcase` and `SemanticColorsDemo`
-- **Building a CLI app?** Look at `QuizGame` for interactive examples
-- **Need tables?** `ProjectExplorer` shows table formatting
-
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Links
 
