@@ -106,7 +106,7 @@ public class QuizGame {
 
     private static void displayWelcome() {
         Clique.parser().print("\n[*cyan, bold]╔════════════════════════════════════════╗[/]");
-        Clique.parser().print("[*cyan, bold]║     JAVA KNOWLEDGE QUIZ 🎯            ║[/]");
+        Clique.parser().print("[*cyan, bold]║     JAVA KNOWLEDGE QUIZ                ║[/]");
         Clique.parser().print("[*cyan, bold]╚════════════════════════════════════════╝[/]\n");
 
         Clique.parser().print("[*green]Welcome to the quiz![/] Test your Java knowledge.\n");
@@ -220,7 +220,7 @@ public class QuizGame {
     private static void displayFinalResults(int score, List<String> results) {
         System.out.println("\n\n");
         Clique.parser().print("[*magenta, bold]╔════════════════════════════════════════╗[/]");
-        Clique.parser().print("[*magenta, bold]║         QUIZ COMPLETE! 🎉             ║[/]");
+        Clique.parser().print("[*magenta, bold]║         QUIZ COMPLETE!                 ║[/]");
         Clique.parser().print("[*magenta, bold]╚════════════════════════════════════════╝[/]\n");
 
         double percentage = (score * 100.0) / QUESTIONS.size();
@@ -305,13 +305,13 @@ public class QuizGame {
 
     private static void displayGrade(double percentage) {
         if (percentage == 100) {
-            Clique.parser().print("[*green, bold]🏆 PERFECT SCORE! Outstanding![/]");
+            Clique.parser().print("[*green, bold] PERFECT SCORE! Outstanding![/]");
         } else if (percentage >= 80) {
-            Clique.parser().print("[*green, bold]⭐ Excellent work! You really know your stuff![/]");
+            Clique.parser().print("[*green, bold] Excellent work! You really know your stuff![/]");
         } else if (percentage >= 60) {
-            Clique.parser().print("[*yellow, bold]👍 Good job! Keep learning![/]");
+            Clique.parser().print("[*yellow, bold] Good job! Keep learning![/]");
         } else {
-            Clique.parser().print("[*red, bold]📚 Keep studying! You'll get better![/]");
+            Clique.parser().print("[*red, bold] Keep studying! You'll get better![/]");
         }
         System.out.println();
     }

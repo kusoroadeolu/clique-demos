@@ -13,72 +13,6 @@ An interactive tour through Clique's visual capabilities, featuring:
 - Geometric patterns
 - Theme gallery with popular color schemes
 
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CliArtGallery"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CliArtGallery
-```
-
-### Theme Showcase
-See all available themes in action with live examples of each color palette.
-
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.ThemeShowcase"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ThemeShowcase
-```
-
-### Semantic Colors Demo
-Learn the pattern of defining semantic color aliases (error, success, warning, info) for consistent styling across your application. Features:
-- Application log viewer
-- Deployment status display
-- System health monitoring
-
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo
-```
-
-### Quiz Game
-A colorful Java knowledge quiz with:
-- Styled tables for questions
-- Real-time scoring
-- Color-coded feedback
-
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.QuizGame"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.QuizGame
-```
-
-### Code Scanner
-Analyze your Java projects with styled output showing:
-- File statistics
-- Code complexity metrics
-- TODO comments finder
-
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CodeScanner" -Dexec.args="/path/to/your/project"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CodeScanner /path/to/your/project
-```
-
-### Project Explorer
-Browse project structure and file statistics with beautiful tables.
-
-**Run it:**
-```bash
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.ProjectExplorer" -Dexec.args="/path/to/your/project"
-# or
-java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExplorer /path/to/your/project
-```
-
 ## Quick Start
 
 ### Prerequisites
@@ -87,6 +21,7 @@ java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExpl
 - A terminal with truecolor (24-bit color) support
 
 ### Setup
+
 **Using Maven**
 ```xml
 <repositories>
@@ -99,7 +34,7 @@ java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExpl
 <dependency>
     <groupId>com.github.kusoroadeolu</groupId>
     <artifactId>clique-demos</artifactId>
-    <version>v0.0.2</version>
+    <version>v0.0.3</version>
 </dependency>
 ```
 
@@ -129,7 +64,89 @@ cd clique-demos
 mvn clean package
 
 # Run any demo
-mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CliArtGallery"
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.CliArtGallery"
+```
+
+**Run it with the DemoLauncher**
+
+For easier access, you can use the `DemoLauncher` class which provides simple methods to run any demo:
+```java
+
+// Run any demo with a single method call
+DemoLauncher.runQuizGame();
+DemoLauncher.runCliArtGallery();
+DemoLauncher.runThemeShowcase();
+
+// Demos that need arguments
+DemoLauncher.runCodeScanner("/path/to/your/project");
+DemoLauncher.runProjectExplorer("/path/to/your/project");
+```
+
+
+**Run it with Maven:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.CliArtGallery"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CliArtGallery
+```
+
+### Theme Showcase
+See all available themes in action with live examples of each color palette.
+
+**Run it:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.ThemeShowcase"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ThemeShowcase
+```
+
+### Semantic Colors Demo
+Learn the pattern of defining semantic color aliases (error, success, warning, info) for consistent styling across your application. Features:
+- Application log viewer
+- Deployment status display
+- System health monitoring
+
+**Run it:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo
+```
+
+### Quiz Game
+A colorful Java knowledge quiz with:
+- Styled tables for questions
+- Real-time scoring
+- Color-coded feedback
+
+**Run it:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.QuizGame"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.QuizGame
+```
+
+### Code Scanner
+Analyze your Java projects with styled output showing:
+- File statistics
+- Code complexity metrics
+- TODO comments finder
+
+**Run it:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.CodeScanner" "-Dexec.args=/path/to/your/project"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CodeScanner /path/to/your/project
+```
+
+### Project Explorer
+Browse project structure and file statistics with beautiful tables.
+
+**Run it:**
+```bash
+mvn compile exec:java "-Dexec.mainClass=com.github.kusoroadeolu.cliquedemos.ProjectExplorer" "-Dexec.args=/path/to/your/project"
+# or
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExplorer /path/to/your/project
 ```
 
 ## Learn More

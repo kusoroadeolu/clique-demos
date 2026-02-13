@@ -6,7 +6,7 @@
 
     <groupId>com.github.kusoroadeolu</groupId>
     <artifactId>clique-demos</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <url>https://github.com/kusoroadeolu/clique-demos</url>
 
     <properties>

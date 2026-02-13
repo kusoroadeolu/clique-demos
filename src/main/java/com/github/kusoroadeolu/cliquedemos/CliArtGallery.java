@@ -323,8 +323,8 @@ public final class CliArtGallery {
 
         // Gruvbox Dark
         Clique.parser().print("  [bold, ul]Gruvbox Dark[/] [dim]- Retro warm dark palette[/]");
-        Clique.parser().print("  [gruvbox_red]●[/] [gruvbox_orange]●[/] [gruvbox_yellow]●[/] [gruvbox_green]●[/] [gruvbox_aqua]●[/] [gruvbox_blue]●[/] [gruvbox_purple]●[/]");
-        Clique.parser().print("  [gruvbox_orange, bold]⚡[/] [bg_gruvbox_bg1, gruvbox_aqua] Info [/] [gruvbox_fg]Retro vibes[/]");
+        Clique.parser().print("  [gb_red]●[/] [gb_orange]●[/] [gb_yellow]●[/] [gb_green]●[/] [gb_aqua]●[/] [gb_blue]●[/] [gb_purple]●[/]");
+        Clique.parser().print("  [gb_orange, bold]⚡[/] [bg_gb_bg1, gb_aqua] Info [/] [gb_fg]Retro vibes[/]");
         System.out.println();
 
         // Nord
