@@ -116,7 +116,7 @@ dependencyResolutionManagement {
 }
 
 dependencies {
-    implementation 'com.github.kusoroadeolu:clique-demos:v0.0.1'
+    implementation 'com.github.kusoroadeolu:clique-demos:v0.0.2'
 }
 ```
 
