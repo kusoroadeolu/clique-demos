@@ -15,9 +15,9 @@ An interactive tour through Clique's visual capabilities, featuring:
 
 **Run it:**
 ```bash
-./gradlew run --args="CliArtGallery"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CliArtGallery"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CliArtGallery
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CliArtGallery
 ```
 
 ### Theme Showcase
@@ -25,9 +25,9 @@ See all available themes in action with live examples of each color palette.
 
 **Run it:**
 ```bash
-./gradlew run --args="ThemeShowcase"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.ThemeShowcase"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ThemeShowcase
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ThemeShowcase
 ```
 
 ### Semantic Colors Demo
@@ -38,9 +38,9 @@ Learn the pattern of defining semantic color aliases (error, success, warning, i
 
 **Run it:**
 ```bash
-./gradlew run --args="SemanticColorsDemo"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.SemanticColorsDemo
 ```
 
 ### Quiz Game
@@ -51,9 +51,9 @@ A colorful Java knowledge quiz with:
 
 **Run it:**
 ```bash
-./gradlew run --args="QuizGame"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.QuizGame"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.QuizGame
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.QuizGame
 ```
 
 ### Code Scanner
@@ -64,9 +64,9 @@ Analyze your Java projects with styled output showing:
 
 **Run it:**
 ```bash
-./gradlew run --args="CodeScanner /path/to/your/project"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CodeScanner" -Dexec.args="/path/to/your/project"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CodeScanner /path/to/your/project
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.CodeScanner /path/to/your/project
 ```
 
 ### Project Explorer
@@ -74,16 +74,16 @@ Browse project structure and file statistics with beautiful tables.
 
 **Run it:**
 ```bash
-./gradlew run --args="ProjectExplorer /path/to/your/project"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.ProjectExplorer" -Dexec.args="/path/to/your/project"
 # or
-java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExplorer /path/to/your/project
+java -cp target/clique-demos.jar com.github.kusoroadeolu.cliquedemos.ProjectExplorer /path/to/your/project
 ```
 
 ## Quick Start
 
 ### Prerequisites
 - Java 21 or higher
-- Maven or Gradle
+- Maven
 - A terminal with truecolor (24-bit color) support
 
 ### Setup
@@ -107,19 +107,18 @@ java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.Project
 ```gradle
 // Add it in your root settings.gradle at the end of repositories:
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
+    dependencyResolutionManagement {
+        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+        repositories {
+            mavenCentral()
+            maven { url 'https://jitpack.io' }
+        }
     }
-}
 
-dependencies {
-    implementation 'com.github.kusoroadeolu:clique-demos:v0.0.2'
-}
+    dependencies {
+        implementation 'com.github.kusoroadeolu:clique-demos:v0.0.2'
+    }
 ```
-
 
 ```bash
 # Clone the repo
@@ -127,10 +126,10 @@ git clone https://github.com/kusoroadeolu/clique-demos.git
 cd clique-demos
 
 # Build the project
-./gradlew build
+mvn clean package
 
 # Run any demo
-./gradlew run --args="CliArtGallery"
+mvn exec:java -Dexec.mainClass="com.github.kusoroadeolu.cliquedemos.CliArtGallery"
 ```
 
 ## Learn More
