@@ -1,13 +1,13 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.ansi.ColorCode;
-import com.github.kusoroadeolu.clique.config.BorderStyle;
-import com.github.kusoroadeolu.clique.config.CellAlign;
-import com.github.kusoroadeolu.clique.config.TableConfiguration;
-import com.github.kusoroadeolu.clique.tables.CustomizableTable;
-import com.github.kusoroadeolu.clique.tables.Table;
-import com.github.kusoroadeolu.clique.tables.TableType;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.ansi.ColorCode;
+import io.github.kusoroadeolu.clique.config.BorderStyle;
+import io.github.kusoroadeolu.clique.config.CellAlign;
+import io.github.kusoroadeolu.clique.config.TableConfiguration;
+import io.github.kusoroadeolu.clique.tables.CustomizableTable;
+import io.github.kusoroadeolu.clique.tables.Table;
+import io.github.kusoroadeolu.clique.tables.TableType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -133,8 +133,8 @@ public class QuizGame {
                 .alignment(CellAlign.LEFT)
                 .build();
 
-        Table questionTable = Clique.table(TableType.ROUNDED_BOX_DRAW, config);
-        questionTable.addHeaders("[*yellow, bold]Question[/]");
+        Table questionTable = Clique.table(TableType.ROUNDED_BOX_DRAW, config)
+        .addHeaders("[*yellow, bold]Question[/]");
         questionTable.addRows("[white]" + q.question + "[/]");
         questionTable.render();
 
@@ -152,8 +152,8 @@ public class QuizGame {
                 .alignment(CellAlign.LEFT)
                 .build();
 
-        Table optionsTable = Clique.table(TableType.COMPACT, optionsConfig);
-        optionsTable.addHeaders("[cyan, bold]#[/]", "[cyan, bold]Answer[/]");
+        Table optionsTable = Clique.table(TableType.COMPACT, optionsConfig)
+        .addHeaders("[cyan, bold]#[/]", "[cyan, bold]Answer[/]");
 
         for (int i = 0; i < q.options.length; i++) {
             optionsTable.addRows(
@@ -208,10 +208,10 @@ public class QuizGame {
 
 
         CustomizableTable scoreTable = Clique.customizableTable(TableType.DEFAULT, config)
+                .addHeaders("[*yellow, bold]Current Score[/]")
                 .customizeHorizontalLine('═')
                 .customizeVerticalLine('║');
 
-        scoreTable.addHeaders("[*yellow, bold]Current Score[/]");
         scoreTable.addRows("[*white, bold]" + score + " / " + questionNumber + "[/]");
         scoreTable.render();
 
@@ -240,8 +240,8 @@ public class QuizGame {
                 .build();
 
 
-        Table finalTable = Clique.table(TableType.BOX_DRAW, finalConfig);
-        finalTable.addHeaders("[*cyan, bold]Metric[/]", "[*cyan, bold]Value[/]");
+        Table finalTable = Clique.table(TableType.BOX_DRAW, finalConfig)
+                .addHeaders("[*cyan, bold]Metric[/]", "[*cyan, bold]Value[/]");
         finalTable.addRows(
                 "[yellow]Questions[/]",
                 "[white, bold]" + QUESTIONS.size() + "[/]"
@@ -275,8 +275,8 @@ public class QuizGame {
                 .alignment(CellAlign.LEFT)
                 .build();
 
-        Table breakdownTable = Clique.table(TableType.MARKDOWN, breakdownConfig);
-        breakdownTable.addHeaders("[cyan, bold]Q#[/]", "[cyan, bold]Category[/]", "[cyan, bold]Result[/]");
+        Table breakdownTable = Clique.table(TableType.MARKDOWN, breakdownConfig)
+                .addHeaders("[cyan, bold]Q#[/]", "[cyan, bold]Category[/]", "[cyan, bold]Result[/]");
 
         for (int i = 0; i < QUESTIONS.size(); i++) {
             Question q = QUESTIONS.get(i);

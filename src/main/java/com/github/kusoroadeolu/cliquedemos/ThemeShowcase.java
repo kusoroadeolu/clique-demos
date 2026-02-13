@@ -1,7 +1,7 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.themes.CliqueTheme;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.spi.CliqueTheme;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class ThemeShowcase {
     }
 
     private static void showcaseTheme(CliqueTheme theme) {
-        theme.register();
         String themeName = theme.themeName();
+        Clique.registerTheme(themeName);
 
         Clique.parser().print("[bold, ul]" + formatThemeName(themeName) + "[/]");
 
@@ -68,17 +68,17 @@ public class ThemeShowcase {
     }
 
     private static void showcaseGruvbox(String variant) {
-        Clique.parser().print("[gruvbox_red]● Red[/]  ");
-        Clique.parser().print("[gruvbox_orange]● Orange[/]  ");
-        Clique.parser().print("[gruvbox_yellow]● Yellow[/]  ");
-        Clique.parser().print("[gruvbox_green]● Green[/]  ");
-        Clique.parser().print("[gruvbox_aqua]● Aqua[/]  ");
-        Clique.parser().print("[gruvbox_blue]● Blue[/]  ");
-        Clique.parser().print("[gruvbox_purple]● Purple[/]");
+        Clique.parser().print("[gb_red]● Red[/]  ");
+        Clique.parser().print("[gb_orange]● Orange[/]  ");
+        Clique.parser().print("[gb_yellow]● Yellow[/]  ");
+        Clique.parser().print("[gb_green]● Green[/]  ");
+        Clique.parser().print("[gb_aqua]● Aqua[/]  ");
+        Clique.parser().print("[gb_blue]● Blue[/]  ");
+        Clique.parser().print("[gb_purple]● Purple[/]");
 
-        Clique.parser().print("[gruvbox_orange, bold]⚡ Gruvbox[/] ");
-        Clique.parser().print("[bg_gruvbox_bg1, gruvbox_aqua] Info [/] ");
-        Clique.parser().print("[gruvbox_fg]Retro vibes[/]\n");
+        Clique.parser().print("[gb_orange, bold]⚡ Gruvbox[/] ");
+        Clique.parser().print("[bg_gb_bg1, gruvbox_aqua] Info [/] ");
+        Clique.parser().print("[gb_fg]Retro vibes[/]\n");
     }
 
     private static void showcaseNord() {

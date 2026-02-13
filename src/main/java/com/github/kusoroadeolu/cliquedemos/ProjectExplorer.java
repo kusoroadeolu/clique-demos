@@ -1,14 +1,14 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.ansi.ColorCode;
-import com.github.kusoroadeolu.clique.boxes.BoxType;
-import com.github.kusoroadeolu.clique.config.BorderStyle;
-import com.github.kusoroadeolu.clique.config.BoxConfiguration;
-import com.github.kusoroadeolu.clique.config.CellAlign;
-import com.github.kusoroadeolu.clique.config.TableConfiguration;
-import com.github.kusoroadeolu.clique.tables.Table;
-import com.github.kusoroadeolu.clique.tables.TableType;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.ansi.ColorCode;
+import io.github.kusoroadeolu.clique.boxes.BoxType;
+import io.github.kusoroadeolu.clique.config.BorderStyle;
+import io.github.kusoroadeolu.clique.config.BoxConfiguration;
+import io.github.kusoroadeolu.clique.config.CellAlign;
+import io.github.kusoroadeolu.clique.config.TableConfiguration;
+import io.github.kusoroadeolu.clique.tables.Table;
+import io.github.kusoroadeolu.clique.tables.TableType;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -57,6 +57,7 @@ public class ProjectExplorer {
 
         // Print header
         Clique.box(BoxType.DOUBLE_LINE, BoxConfiguration.immutableBuilder().autoSize().borderStyle(style).build())
+                .noDimensions()
                 .content("[yellow]PROJECT FILE EXPLORER")
                 .render();
 
@@ -109,8 +110,8 @@ public class ProjectExplorer {
                 .padding(2)
                 .build();
 
-        Table typeTable = Clique.table(TableType.BOX_DRAW, config);
-        typeTable.addHeaders("[cyan, bold]Extension[/]", "[cyan, bold]Files[/]", "[cyan, bold]Lines[/]", "[cyan, bold]Size (KB)[/]");
+        Table typeTable = Clique.table(TableType.BOX_DRAW, config)
+                .addHeaders("[cyan, bold]Extension[/]", "[cyan, bold]Files[/]", "[cyan, bold]Lines[/]", "[cyan, bold]Size (KB)[/]");
 
         for (FileStats fs : sortedStats) {
             String extColor = getExtensionColor(fs.extension);
@@ -130,8 +131,8 @@ public class ProjectExplorer {
 
         Clique.parser().print("\n[*magenta, bold]📈 Largest Files (by lines)[/]\n");
 
-        Table largeTable = Clique.table(TableType.MARKDOWN, config);
-        largeTable.addHeaders("[cyan, bold]File[/]", "[cyan, bold]Lines[/]", "[cyan, bold]Size (KB)[/]");
+        Table largeTable = Clique.table(TableType.MARKDOWN, config)
+                .addHeaders("[cyan, bold]File[/]", "[cyan, bold]Lines[/]", "[cyan, bold]Size (KB)[/]");
 
         for (FileInfo fi : top5) {
             String truncated = fi.name.length() > 40 ? fi.name.substring(0, 37) + "..." : fi.name;

@@ -1,10 +1,10 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.config.CellAlign;
-import com.github.kusoroadeolu.clique.config.TableConfiguration;
-import com.github.kusoroadeolu.clique.tables.Table;
-import com.github.kusoroadeolu.clique.tables.TableType;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.config.CellAlign;
+import io.github.kusoroadeolu.clique.config.TableConfiguration;
+import io.github.kusoroadeolu.clique.tables.Table;
+import io.github.kusoroadeolu.clique.tables.TableType;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -175,8 +175,8 @@ public class CodeScanner {
                 .build();
 
 
-        Table table = Clique.table(TableType.BOX_DRAW, config);
-        table.addHeaders("[cyan, bold]File[/]", "[cyan, bold]Lines[/]",
+        Table table = Clique.table(TableType.BOX_DRAW, config)
+                .addHeaders("[cyan, bold]File[/]", "[cyan, bold]Lines[/]",
                 "[cyan, bold]Methods[/]", "[cyan, bold]TODOs[/]", "[cyan, bold]Status[/]");
 
         fileStats.stream()
@@ -219,8 +219,8 @@ public class CodeScanner {
                 .padding(2)
                 .build();
 
-        Table table = Clique.table(TableType.BOX_DRAW, config);
-        table.addHeaders("[cyan, bold]Method[/]", "[cyan, bold]Lines[/]", "[cyan, bold]File[/]");
+        var table = Clique.table(TableType.BOX_DRAW, config)
+                .addHeaders("[cyan, bold]Method[/]", "[cyan, bold]Lines[/]", "[cyan, bold]File[/]");
 
         for (MethodInfo m : longMethods) {
             String severity = m.lines > 100 ? "red, bold" : m.lines > 50 ? "red" : "yellow";
@@ -249,8 +249,8 @@ public class CodeScanner {
                 .padding(2)
                 .build();
 
-        Table table = Clique.table(TableType.BOX_DRAW, config);
-        table.addHeaders("[cyan, bold]Type[/]", "[cyan, bold]File[/]",
+        var table = Clique.table(TableType.BOX_DRAW, config)
+                .addHeaders("[cyan, bold]Type[/]", "[cyan, bold]File[/]",
                 "[cyan, bold]Line[/]", "[cyan, bold]Comment[/]");
 
         todos.stream()

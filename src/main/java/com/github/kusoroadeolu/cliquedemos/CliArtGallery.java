@@ -1,14 +1,14 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.ansi.ColorCode;
-import com.github.kusoroadeolu.clique.ansi.StyleCode;
-import com.github.kusoroadeolu.clique.config.BorderStyle;
-import com.github.kusoroadeolu.clique.config.CellAlign;
-import com.github.kusoroadeolu.clique.config.TableConfiguration;
-import com.github.kusoroadeolu.clique.style.StyleBuilder;
-import com.github.kusoroadeolu.clique.tables.Table;
-import com.github.kusoroadeolu.clique.tables.TableType;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.ansi.ColorCode;
+import io.github.kusoroadeolu.clique.ansi.StyleCode;
+import io.github.kusoroadeolu.clique.config.BorderStyle;
+import io.github.kusoroadeolu.clique.config.CellAlign;
+import io.github.kusoroadeolu.clique.config.TableConfiguration;
+import io.github.kusoroadeolu.clique.style.StyleBuilder;
+import io.github.kusoroadeolu.clique.tables.Table;
+import io.github.kusoroadeolu.clique.tables.TableType;
 
 public final class CliArtGallery {
 
@@ -58,10 +58,10 @@ public final class CliArtGallery {
                 .alignment(CellAlign.CENTER)
                 .build();
 
-        Table entrance = Clique.table(TableType.BOX_DRAW, config);
-        entrance.addHeaders("[*magenta, bold] CLI ART GALLERY [/]");
-        entrance.addRows("[dim]Where Code Meets Creativity[/]");
-        entrance.render();
+        var entrance = Clique.table(TableType.BOX_DRAW, config);
+        entrance.addHeaders("[*magenta, bold] CLI ART GALLERY [/]")
+                .addRows("[dim]Where Code Meets Creativity[/]").
+                render();
 
         Clique.parser().print("\n           [yellow]Press Enter to begin tour...[/]");
     }
@@ -170,11 +170,10 @@ public final class CliArtGallery {
                 .alignment(CellAlign.CENTER)
                 .build();
 
-        Table quoteTable = Clique.table(TableType.ROUNDED_BOX_DRAW, config);
-        quoteTable.addHeaders("[*white, italic, bold]The only way to do great work[/]");
-        quoteTable.addRows("[*cyan]is to[/] [*green, bold]love[/] [*cyan]what you do[/]");
-        quoteTable.addRows("[dim]— Steve Jobs[/]");
-        quoteTable.render();
+        var quoteTable = Clique.table(TableType.ROUNDED_BOX_DRAW, config);
+        quoteTable.addHeaders("[*white, italic, bold]The only way to do great work[/]")
+        .addRows("[*cyan]is to[/] [*green, bold]love[/] [*cyan]what you do[/]")
+        .addRows("[dim]— Steve Jobs[/]").render();
 
         exhibitFooter("Styled typography + decorative elements");
     }
@@ -365,9 +364,8 @@ public final class CliArtGallery {
                 .alignment(CellAlign.CENTER)
                 .build();
 
-        Table exit = Clique.table(TableType.BOX_DRAW, config);
-        exit.addHeaders("[*cyan, bold]Thank You For Visiting! [/]");
-        exit.render();
+        var exit = Clique.table(TableType.BOX_DRAW, config);
+        exit.addHeaders("[*cyan, bold]Thank You For Visiting! [/]").render();
 
         System.out.println();
         Clique.parser().print("             [red]◆[/] [yellow]◆[/] [green]◆[/] [cyan]◆[/] [blue]◆[/] [magenta]◆[/]");

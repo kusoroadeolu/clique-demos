@@ -99,7 +99,7 @@ java -cp build/libs/clique-demos.jar com.github.kusoroadeolu.cliquedemos.Project
 <dependency>
     <groupId>com.github.kusoroadeolu</groupId>
     <artifactId>clique-demos</artifactId>
-    <version>v0.0.1</version>
+    <version>v0.0.2</version>
 </dependency>
 ```
 

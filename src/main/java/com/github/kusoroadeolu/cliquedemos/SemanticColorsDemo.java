@@ -1,7 +1,7 @@
 package com.github.kusoroadeolu.cliquedemos;
 
-import com.github.kusoroadeolu.clique.Clique;
-import com.github.kusoroadeolu.clique.ansi.AnsiCode;
+import io.github.kusoroadeolu.clique.Clique;
+import io.github.kusoroadeolu.clique.spi.AnsiCode;
 
 //A semantic colors demo mimicking API output in a real world env
 public class SemanticColorsDemo {
