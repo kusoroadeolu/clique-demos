@@ -1,4 +1,4 @@
-package com.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.cliquedemos;
 
 import io.github.kusoroadeolu.clique.Clique;
 import io.github.kusoroadeolu.clique.spi.CliqueTheme;
@@ -10,7 +10,7 @@ public class ThemeShowcase {
     public static void main(String[] args) {
         Clique.parser().print("[bold]🎨 [ul]Clique Theme Showcase[/]\n");
 
-        List<CliqueTheme> themes = Clique.discoverThemes();
+        List<CliqueTheme> themes = Clique.findAvailableThemes();
 
         for (CliqueTheme theme : themes) {
             showcaseTheme(theme);

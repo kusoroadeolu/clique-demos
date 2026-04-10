@@ -1,10 +1,8 @@
-package com.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.cliquedemos;
 
 import io.github.kusoroadeolu.clique.Clique;
-import io.github.kusoroadeolu.clique.config.CellAlign;
-import io.github.kusoroadeolu.clique.config.TableConfiguration;
-import io.github.kusoroadeolu.clique.tables.Table;
-import io.github.kusoroadeolu.clique.tables.TableType;
+import io.github.kusoroadeolu.clique.components.Table;
+import io.github.kusoroadeolu.clique.configuration.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -57,15 +55,15 @@ public class CodeScanner {
     }
 
     public static void main(String[] args) {
-        String projectPath = args.length > 0 ? args[0] : ".";
+        String projectPath = args.length > 0 ? String.join(" ", args) : ".";
         Path root = Paths.get(projectPath);
 
-        // Header
-        Clique.parser().print("\n[*magenta, bold]╔════════════════════════════════════╗[/]");
-        Clique.parser().print("[*magenta, bold]║    CODE QUALITY SCANNER 🔍         ║[/]");
-        Clique.parser().print("[*magenta, bold]╚════════════════════════════════════╝[/]\n");
+        // Header — replaces the hand-drawn ASCII box
+        Clique.box(BoxType.DOUBLE_LINE, "magenta")
+                .content("[*magenta, bold]CODE QUALITY SCANNER 🔍[/]")
+                .render();
 
-        Clique.parser().print("[dim]Scanning:[/] [yellow]" + root.toAbsolutePath() + "[/]\n");
+        Clique.parser().print("\n[dim]Scanning:[/] [yellow]" + root.toAbsolutePath() + "[/]\n");
 
         List<TodoItem> todos = new ArrayList<>();
         List<MethodInfo> methods = new ArrayList<>();
@@ -78,7 +76,6 @@ public class CodeScanner {
                 String fileName = path.getFileName().toString();
                 if (!fileName.endsWith(".java")) continue;
 
-                // Skip test files and build directories
                 if (path.toString().contains("test") ||
                         path.toString().contains("target") ||
                         path.toString().contains(".git")) {
@@ -97,7 +94,6 @@ public class CodeScanner {
             return;
         }
 
-        // Display results
         displayFileComplexity(fileStats);
         displayLongMethods(methods);
         displayTodos(todos);
@@ -122,12 +118,10 @@ public class CodeScanner {
                 String line = lines.get(i).trim();
                 lineCount++;
 
-                // Skip empty lines and comments for method detection
                 if (line.isEmpty() || line.startsWith("//") || line.startsWith("/*") || line.startsWith("*")) {
                     continue;
                 }
 
-                // Check for TODOs/FIXMEs
                 if (line.contains("TODO") || line.contains("FIXME") || line.contains("HACK")) {
                     String type = line.contains("FIXME") ? "FIXME" : line.contains("HACK") ? "HACK" : "TODO";
                     String text = extractComment(line);
@@ -135,7 +129,6 @@ public class CodeScanner {
                     todoCount++;
                 }
 
-                // Method detection (simple heuristic)
                 if (!inMethod && (line.contains("public ") || line.contains("private ") ||
                         line.contains("protected ")) && line.contains("(") &&
                         !line.contains("class ") && !line.contains("interface ")) {
@@ -166,36 +159,27 @@ public class CodeScanner {
     }
 
     private static void displayFileComplexity(List<FileStats> fileStats) {
-        Clique.parser().print("[*blue, bold]📁 File Complexity[/]\n");
-
-        TableConfiguration config = TableConfiguration.immutableBuilder()
-                .parser(Clique.parser())
-                .alignment(CellAlign.LEFT)
-                .padding(2)
-                .build();
-
-
-        Table table = Clique.table(TableType.BOX_DRAW, config)
-                .addHeaders("[cyan, bold]File[/]", "[cyan, bold]Lines[/]",
-                "[cyan, bold]Methods[/]", "[cyan, bold]TODOs[/]", "[cyan, bold]Status[/]");
+        Table table = Clique.table(TableType.BOX_DRAW,
+                        TableConfiguration.builder().alignment(CellAlign.LEFT).build())
+                .headers("[cyan, bold]File[/]", "[cyan, bold]Lines[/]",
+                        "[cyan, bold]Methods[/]", "[cyan, bold]TODOs[/]", "[cyan, bold]Status[/]");
 
         fileStats.stream()
                 .sorted((a, b) -> Integer.compare(b.lines, a.lines))
                 .limit(10)
-                .forEach(fs -> {
-                    String truncated = truncate(fs.name, 35);
-                    String status = getComplexityStatus(fs.lines, fs.methods);
+                .forEach(fs -> table.row(
+                        "[white]" + truncate(fs.name, 35) + "[/]",
+                        getLineColor(fs.lines) + fs.lines + "[/]",
+                        "[yellow]" + fs.methods + "[/]",
+                        fs.todos > 0 ? "[red]" + fs.todos + "[/]" : "[dim]0[/]",
+                        getComplexityStatus(fs.lines, fs.methods)
+                ));
 
-                    table.addRows(
-                            "[white]" + truncated + "[/]",
-                            getLineColor(fs.lines) + fs.lines + "[/]",
-                            "[yellow]" + fs.methods + "[/]",
-                            fs.todos > 0 ? "[red]" + fs.todos + "[/]" : "[dim]0[/]",
-                            status
-                    );
-                });
+        Clique.frame(BoxType.ROUNDED, "blue")
+                .title("[*blue, bold]📁 File Complexity[/]", FrameAlign.LEFT)
+                .nest(table)
+                .render();
 
-        table.render();
         System.out.println();
     }
 
@@ -211,27 +195,24 @@ public class CodeScanner {
             return;
         }
 
-        Clique.parser().print("[*yellow, bold]⚠ Long Methods (>30 lines)[/]\n");
-
-        TableConfiguration config = TableConfiguration.immutableBuilder()
-                .parser(Clique.parser())
-                .alignment(CellAlign.LEFT)
-                .padding(2)
-                .build();
-
-        var table = Clique.table(TableType.BOX_DRAW, config)
-                .addHeaders("[cyan, bold]Method[/]", "[cyan, bold]Lines[/]", "[cyan, bold]File[/]");
+        Table table = Clique.table(TableType.BOX_DRAW,
+                        TableConfiguration.builder().alignment(CellAlign.LEFT).build())
+                .headers("[cyan, bold]Method[/]", "[cyan, bold]Lines[/]", "[cyan, bold]File[/]");
 
         for (MethodInfo m : longMethods) {
             String severity = m.lines > 100 ? "red, bold" : m.lines > 50 ? "red" : "yellow";
-            table.addRows(
+            table.row(
                     "[white]" + truncate(m.name, 30) + "[/]",
                     "[" + severity + "]" + m.lines + "[/]",
                     "[dim]" + truncate(m.file, 30) + "[/]"
             );
         }
 
-        table.render();
+        Clique.frame(BoxType.ROUNDED, "yellow")
+                .title("[*yellow, bold]⚠ Long Methods (>30 lines)[/]", FrameAlign.LEFT)
+                .nest(table)
+                .render();
+
         System.out.println();
     }
 
@@ -241,24 +222,17 @@ public class CodeScanner {
             return;
         }
 
-        Clique.parser().print("[*cyan, bold]📝 TODOs & FIXMEs[/]\n");
-
-        TableConfiguration config = TableConfiguration.immutableBuilder()
-                .parser(Clique.parser())
-                .alignment(CellAlign.LEFT)
-                .padding(2)
-                .build();
-
-        var table = Clique.table(TableType.BOX_DRAW, config)
-                .addHeaders("[cyan, bold]Type[/]", "[cyan, bold]File[/]",
-                "[cyan, bold]Line[/]", "[cyan, bold]Comment[/]");
+        Table table = Clique.table(TableType.BOX_DRAW,
+                        TableConfiguration.builder().alignment(CellAlign.LEFT).build())
+                .headers("[cyan, bold]Type[/]", "[cyan, bold]File[/]",
+                        "[cyan, bold]Line[/]", "[cyan, bold]Comment[/]");
 
         todos.stream()
                 .limit(10)
                 .forEach(todo -> {
                     String typeColor = todo.type.equals("FIXME") ? "red" :
                             todo.type.equals("HACK") ? "magenta" : "yellow";
-                    table.addRows(
+                    table.row(
                             "[" + typeColor + ", bold]" + todo.type + "[/]",
                             "[dim]" + truncate(todo.file, 25) + "[/]",
                             "[white]" + todo.line + "[/]",
@@ -266,7 +240,11 @@ public class CodeScanner {
                     );
                 });
 
-        table.render();
+        Clique.frame(BoxType.ROUNDED, "cyan")
+                .title("[*cyan, bold]📝 TODOs & FIXMEs[/]", FrameAlign.LEFT)
+                .nest(table)
+                .render();
+
         System.out.println();
     }
 
@@ -280,31 +258,38 @@ public class CodeScanner {
         long largeFiles = fileStats.stream().filter(f -> f.lines > 200).count();
         long longMethods = methods.stream().filter(m -> m.lines > 30).count();
 
-        Clique.parser().print("[*green, bold]📊 Summary[/]");
-        Clique.parser().print("[dim]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[/]");
-        Clique.parser().print("[cyan]Files Analyzed:[/]     [white, bold]" + fileStats.size() + "[/]");
-        Clique.parser().print("[cyan]Total Lines:[/]        [white, bold]" + totalLines + "[/]");
-        Clique.parser().print("[cyan]Total Methods:[/]      [white, bold]" + totalMethods + "[/]");
-        Clique.parser().print("[cyan]Avg Lines/File:[/]     [white, bold]" + avgLinesPerFile + "[/]");
-        Clique.parser().print("[cyan]Avg Lines/Method:[/]   [white, bold]" + avgLinesPerMethod + "[/]");
-        Clique.parser().print("");
-
         String healthColor = (largeFiles == 0 && longMethods == 0 && todos.size() < 5) ? "green" :
                 (largeFiles > 3 || longMethods > 5) ? "red" : "yellow";
 
-        Clique.parser().print("[" + healthColor + ", bold]Code Health Indicators:[/]");
-        Clique.parser().print("  [yellow]Large Files (>200):[/]    " + getHealthIndicator(largeFiles, 3));
-        Clique.parser().print("  [yellow]Long Methods (>30):[/]    " + getHealthIndicator(longMethods, 5));
-        Clique.parser().print("  [yellow]TODOs/FIXMEs:[/]          " + getHealthIndicator(todos.size(), 10));
+        var indenter = Clique.list()
+                .item("[cyan]•[/] ", "[cyan]Files Analyzed:[/]   [white, bold]" + fileStats.size() + "[/]")
+                .item("[cyan]•[/] ", "[cyan]Total Lines:[/]      [white, bold]" +  totalLines + "[/]")
+                .item("[cyan]•[/] ", "[cyan]Total Methods:[/]    [white, bold]" + totalMethods + "[/]")
+                .item("[cyan]•[/] ", "[cyan]Avg Lines/File:[/]   [white, bold]" + avgLinesPerFile + "[/]")
+                .item("[cyan]•[/] ", "[cyan]Avg Lines/Method:[/] [white, bold]" +  avgLinesPerMethod + "[/]");
+
+
+        var health = Clique.list()
+                .item("[yellow]→[/] ", "[yellow]Large Files (>200):[/]" + getHealthIndicator(largeFiles, 3))
+                .item("[yellow]→[/] ","[yellow]Long Methods (>30):[/]  " + getHealthIndicator(longMethods, 5))
+                .item("[yellow]→[/] ", "[yellow]TODOs/FIXMEs:[/]        " + getHealthIndicator(todos.size(), 10));
+
+
+        Clique.frame(healthColor)
+                .title("[" + healthColor + ", bold]📊 Summary[/]", FrameAlign.LEFT)
+                .nest(indenter)
+                .nest("[dim]─────────────────────────────[/]")
+                .nest("[" + healthColor + ", bold]Code Health Indicators[/]")
+                .nest(health)
+                .render();
+
         System.out.println();
     }
 
-    // Helper methods
+    // Helper methods — unchanged
     private static String extractComment(String line) {
         int idx = line.indexOf("//");
-        if (idx != -1) {
-            return line.substring(idx + 2).trim();
-        }
+        if (idx != -1) return line.substring(idx + 2).trim();
         return line;
     }
 
@@ -312,7 +297,6 @@ public class CodeScanner {
         line = line.replaceAll("\\s+", " ");
         int parenIdx = line.indexOf("(");
         if (parenIdx == -1) return "unknown";
-
         String[] parts = line.substring(0, parenIdx).trim().split(" ");
         return parts[parts.length - 1];
     }

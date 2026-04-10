@@ -1,12 +1,8 @@
-package com.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.cliquedemos;
 
 import java.io.IOException;
 
 public class DemoLauncher {
-
-    public static void runCliArtGallery() {
-        CliArtGallery.main(new String[]{});
-    }
 
     public static void runThemeShowcase() {
         ThemeShowcase.main(new String[]{});
@@ -20,9 +16,9 @@ public class DemoLauncher {
         QuizGame.main(new String[]{});
     }
 
-    public static void runCodeScanner(String projectPath) {
-        CodeScanner.main(new String[]{projectPath});
-    }
+//    public static void runCodeScanner(String projectPath) {
+//        CodeScanner.main(new String[]{projectPath});
+//    }
 
     public static void runProjectExplorer(String projectPath) {
         try {

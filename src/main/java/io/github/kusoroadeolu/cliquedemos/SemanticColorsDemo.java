@@ -1,4 +1,4 @@
-package com.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.cliquedemos;
 
 import io.github.kusoroadeolu.clique.Clique;
 import io.github.kusoroadeolu.clique.spi.AnsiCode;
@@ -6,27 +6,13 @@ import io.github.kusoroadeolu.clique.spi.AnsiCode;
 //A semantic colors demo mimicking API output in a real world env
 public class SemanticColorsDemo {
 
-    private static class RGBColor implements AnsiCode {
-        private final String code;
-
-        public RGBColor(int r, int g, int b, boolean isBackground) {
-            int type = isBackground ? 48 : 38;
-            this.code = String.format("\u001B[%d;2;%d;%d;%dm", type, r, g, b);
-        }
-
-        @Override
-        public String toString() {
-            return code;
-        }
-    }
-
     public static class AppColors {
-        public static final AnsiCode ERROR = new RGBColor(191, 97, 106, false);     // Red
-        public static final AnsiCode SUCCESS = new RGBColor(163, 190, 140, false);   // Green
-        public static final AnsiCode WARNING = new RGBColor(235, 203, 139, false);   // Yellow
-        public static final AnsiCode INFO = new RGBColor(136, 192, 208, false);      // Cyan
-        public static final AnsiCode DEBUG = new RGBColor(180, 142, 173, false);     // Purple
-        public static final AnsiCode MUTED = new RGBColor(216, 222, 233, false);     // Light gray
+        public static final AnsiCode ERROR = Clique.rgb(191, 97, 106, false);     // Red
+        public static final AnsiCode SUCCESS = Clique.rgb(163, 190, 140, false);   // Green
+        public static final AnsiCode WARNING = Clique.rgb(235, 203, 139, false);   // Yellow
+        public static final AnsiCode INFO = Clique.rgb(136, 192, 208, false);      // Cyan
+        public static final AnsiCode DEBUG = Clique.rgb(180, 142, 173, false);     // Purple
+        public static final AnsiCode MUTED = Clique.rgb(216, 222, 233, false);     // Light gray
     }
 
     public static void main(String[] args) {
