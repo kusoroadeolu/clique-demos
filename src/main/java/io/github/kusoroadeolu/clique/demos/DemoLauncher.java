@@ -20,6 +20,14 @@ public class DemoLauncher {
         CodeScanner.main(new String[]{});
     }
 
+    public static void runThoughtStream(){
+        try {
+            ThoughtStream.main(new String[]{});
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void runBuildPipeline(){
         try {
             BuildPipeline.main(new String[0]);

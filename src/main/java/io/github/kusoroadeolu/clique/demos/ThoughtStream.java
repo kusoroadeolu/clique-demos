@@ -21,7 +21,7 @@ import java.util.*;
  *
  * Uses Frame + Tree for layout, Box for the status bar.
  */
-public class AiThoughtStream {
+public class ThoughtStream {
 
     // ANSI escape to clear terminal and move cursor to top-left
     private static final String CLEAR = "\033[2J\033[H";
@@ -31,14 +31,6 @@ public class AiThoughtStream {
 
     public static void main(String[] args) throws InterruptedException {
 
-        // ── Tree configuration ──────────────────────────────────────────────
-        TreeConfiguration treeConfig = TreeConfiguration.builder()
-                .connectorColor("*blue, bold") // cyberpunk-ish blue guides
-                .build();
-
-        // ── Thought script ───────────────────────────────────────────────────
-        // Each entry: path to parent node (empty = root children), label, delay
-        // Path indices refer to the order nodes were added at each depth level.
 
         String question = "Is this decision reversible?";
 
@@ -64,7 +56,7 @@ public class AiThoughtStream {
         );
 
         // ── Build initial empty tree ─────────────────────────────────────────
-        Tree root = Clique.tree("[*blue, bold]⟨ reasoning ⟩", treeConfig);
+        Tree root = Clique.tree("[*blue, bold]⟨ reasoning ⟩", "*blue, bold");
 
 
         // ── Animate ──────────────────────────────────────────────────────────
