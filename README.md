@@ -2,17 +2,6 @@
 
 A collection of interactive demos showcasing the capabilities of the [Clique](https://github.com/kusoroadeolu/Clique) library for building beautiful CLI applications in Java.
 
-## What's Inside
-
-### CLI Art Gallery
-An interactive tour through Clique's visual capabilities, featuring:
-- Rainbow typography and gradients
-- Styled quotes and banners
-- Complete color palette showcase
-- Colored ASCII art
-- Geometric patterns
-- Theme gallery with popular color schemes
-
 ## Quick Start
 
 ### Prerequisites
@@ -95,9 +84,9 @@ See all available themes in action with live examples of each color palette.
 
 **Run it:**
 ```bash
-mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.cliquedemos.ThemeShowcase"
+mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.clique.demos.ThemeShowcase"
 # or
-java -cp target/clique-demos.jar io.github.kusoroadeolu.cliquedemos.ThemeShowcase
+java -cp target/clique-demos.jar io.github.kusoroadeolu.clique.demos.ThemeShowcase
 ```
 
 ### Semantic Colors Demo
@@ -108,9 +97,9 @@ Learn the pattern of defining semantic color aliases (error, success, warning, i
 
 **Run it:**
 ```bash
-mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.cliquedemos.SemanticColorsDemo"
+mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.clique.demos.SemanticColorsDemo"
 # or
-java -cp target/clique-demos.jar io.github.kusoroadeolu.cliquedemos.SemanticColorsDemo
+java -cp target/clique-demos.jar io.github.kusoroadeolu.clique.demos.SemanticColorsDemo
 ```
 
 ### Quiz Game
@@ -121,9 +110,9 @@ A colorful Java knowledge quiz with:
 
 **Run it:**
 ```bash
-mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.cliquedemos.QuizGame"
+mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.clique.demos.QuizGame"
 # or
-java -cp target/clique-demos.jar io.github.kusoroadeolu.cliquedemos.QuizGame
+java -cp target/clique-demos.jar io.github.kusoroadeolu.clique.demos.QuizGame
 ```
 
 ### Code Scanner
@@ -134,9 +123,9 @@ Analyze your Java projects with styled output showing:
 
 **Run it:**
 ```bash
-mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.cliquedemos.CodeScanner" "-Dexec.args=/path/to/your/project"
+mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.clique.demos.CodeScanner" "-Dexec.args=/path/to/your/project"
 # or
-java -cp target/clique-demos.jar io.github.kusoroadeolu.cliquedemos.CodeScanner /path/to/your/project
+java -cp target/clique-demos.jar io.github.kusoroadeolu.clique.demos.CodeScanner /path/to/your/project
 ```
 
 ### Project Explorer
@@ -144,9 +133,9 @@ Browse project structure and file statistics with beautiful tables.
 
 **Run it:**
 ```bash
-mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.cliquedemos.ProjectExplorer" "-Dexec.args=/path/to/your/project"
+mvn compile exec:java "-Dexec.mainClass=io.github.kusoroadeolu.clique.demos.ProjectExplorer" "-Dexec.args=/path/to/your/project"
 # or
-java -cp target/clique-demos.jar io.github.kusoroadeolu.cliquedemos.ProjectExplorer /path/to/your/project
+java -cp target/clique-demos.jar io.github.kusoroadeolu.clique.demos.ProjectExplorer /path/to/your/project
 ```
 
 ## Learn More
@@ -157,7 +146,6 @@ These demos showcase different aspects of Clique:
 - **Tables** - Beautiful ASCII tables with custom borders
 - **Themes** - Pre-built color schemes (Catppuccin, Dracula, Nord, etc.)
 - **Custom colors** - RGB true color support
-- **Composability** - Combine styles for semantic naming
 
 Check out the [full documentation](https://github.com/kusoroadeolu/Clique) to learn how to use Clique in your own projects.
 

@@ -1,4 +1,4 @@
-package io.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.clique.demos;
 
 import io.github.kusoroadeolu.clique.Clique;
 import io.github.kusoroadeolu.clique.components.ProgressBar;
@@ -94,7 +94,7 @@ public class MusicVisualizer {
             double noise = 0.3 + 0.7 * rng.nextDouble();
             target[i] = Math.min(MAX_VAL, Math.max(5, (bass * 0.7 + mid + 0.15) * noise * MAX_VAL));
         }
-        // Kick drum — slam the low bands
+
         if (rng.nextInt(4) == 0)
             for (int i = 0; i < 4; i++) target[i] = 90 + rng.nextInt(10);
 

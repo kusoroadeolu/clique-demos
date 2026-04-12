@@ -1,4 +1,4 @@
-package io.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.clique.demos;
 
 import io.github.kusoroadeolu.clique.Clique;
 import io.github.kusoroadeolu.clique.components.Component;
@@ -7,7 +7,6 @@ import io.github.kusoroadeolu.clique.configuration.FrameAlign;
 import io.github.kusoroadeolu.clique.configuration.TableConfiguration;
 import io.github.kusoroadeolu.clique.configuration.TableType;
 
-import java.awt.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;

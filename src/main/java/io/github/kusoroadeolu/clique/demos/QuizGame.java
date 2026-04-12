@@ -1,4 +1,4 @@
-package io.github.kusoroadeolu.cliquedemos;
+package io.github.kusoroadeolu.clique.demos;
 
 import io.github.kusoroadeolu.clique.Clique;
 import io.github.kusoroadeolu.clique.components.Box;

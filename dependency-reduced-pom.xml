@@ -20,7 +20,7 @@
               <outputFile>${project.build.directory}/runner.jar</outputFile>
               <transformers>
                 <transformer>
-                  <mainClass>io.github.kusoroadeolu.cliquedemos.Main</mainClass>
+                  <mainClass>io.github.kusoroadeolu.clique.demos.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
