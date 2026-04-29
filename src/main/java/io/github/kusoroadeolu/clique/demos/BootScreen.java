@@ -132,6 +132,7 @@ public class BootScreen {
                 bar.tickAnimated(speed);
                 Thread.sleep(18 + RNG.nextInt(25));
             }
+
             System.out.println();
             Thread.sleep(80 + RNG.nextInt(120));
         }
@@ -169,7 +170,7 @@ public class BootScreen {
         System.out.print("\033[A\033[2K");
 
         Ink green = Clique.ink().of("tokyo_green").bold();
-        Ink white = Clique.ink().of("tokyo_white").bold(); // *tokyo_white - need to check if ink supports theme bright variants
+        Ink white = Clique.ink().of("tokyo_white").bold();
         Ink fg = Clique.ink().of("tokyo_fg");
 
         String content =

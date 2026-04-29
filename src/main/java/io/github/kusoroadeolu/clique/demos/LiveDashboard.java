@@ -18,7 +18,7 @@ public final class LiveDashboard {
 
     // ─── Config ───────────────────────────────────────────────────────────────
 
-    private static final int    TICKS        = 60;
+    private static final int    TICKS        = 300;
     private static final int    TICK_MS      = 500;
     private static final int    CHART_WIDTH  = 30;
     private static final Random RNG          = new Random();
@@ -34,9 +34,9 @@ public final class LiveDashboard {
     private static final Deque<Double> reqHistory = new ArrayDeque<>();
 
     // Simulated base values that drift over time
-    private static double cpuBase  = 28.0;
-    private static double memBase  = 54.0;
-    private static double reqBase  = 820.0;
+    private static double cpuBase  = 30.0;
+    private static double memBase  = 58.0;
+    private static double reqBase  = 700.0;
 
     // Service states — one degrades at tick 20, recovers at tick 40
     private static final String[] SERVICE_NAMES = {

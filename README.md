@@ -23,7 +23,7 @@ A collection of interactive demos showcasing the capabilities of the [Clique](ht
 <dependency>
 <groupId>com.github.kusoroadeolu</groupId>
 <artifactId>clique-demos</artifactId>
-<version>v0.0.5</version>
+<version>v0.0.6</version>
 </dependency>
 ```
 
